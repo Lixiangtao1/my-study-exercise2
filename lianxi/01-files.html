@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student (name,sex,age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.eat = function () {
+                console.log('eat方法');
+            }//对象方法
+        }
+        Student.prototype.hello = function () {
+            console.log('hello方法');
+        }//原型方法
+        Student.prototype.sleep = function () {
+            console.log('sleep方法12312')
+        }
+        Student.play = function () {
+            console.log('play方法');
+        }//类方法 
+        var aaa = new Student('xiaoming', '男', 20);
+        aaa.hello();
+        aaa.eat();
+        // aaa.play();//实例对象不能使用类方法
+
+        function Teacher (naem,age) {
+            this.name = naem;
+            this.age = age;
+            this.sleep = function () {
+                console.log('sleep方法');
+            }
+        }
+        Teacher.prototype = new Student();
+        var bbb = new Teacher();
+        var ccc = new Student();
+        ccc.sleep.call(bbb); //bbb使用了Student中与Teacher同名的方法
+    </script>
+</body>
+</html>

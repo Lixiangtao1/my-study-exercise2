@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active {
+            width: 150px;
+            height:50px;
+            border: 2px solid skyblue;
+        }
+        .box1 {width:300px;height:300px;background-color: skyblue;}
+        .box2 {width:200px;height:200px;background-color: greenyellow;}
+        .box3 {width:100px;height:100px;background-color: goldenrod;}
+
+        .hover {background-color: hotpink;}
+    </style>
+</head>
+<body>
+    <div class="box" style="width: 100px;height: 100px;">
+        <!-- <p>123</p> -->
+        <ul id="ul"></ul>
+        <p>Hello</p>
+        <p>2nd Paragraph</p>
+    </div>
+    <br>
+    <input type="text" id="aaa" value="输入内容" size="large" onclick="change()">
+
+    <div class="box1">top
+        <br>
+        <div class="box2">center
+            <br>
+            <div class="box3">bottom</div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('.box').on('click', function () {
+            $(this).css('background','skyblue');
+            console.log($(this)); // jquery对象  可以使用一些jQuery的一些方法
+            console.log(this); // 返回的 是html对象
+            $('#aaa').click();
+        })
+
+        function change() {
+            $('#aaa').addClass('active');
+            $('#aaa').val('Merry Christmas!!');
+        }
+
+        var _html = $('ul').html('<li>haha</li><li>hadsaf</li>');
+        console.log(_html);
+        
+        var p = $("p:first");
+        var position = p.position();
+        $('p:last').html('left' + position.left +',top' + position.top);
+
+        // $('.box').off('click'); // .off() 移除元素上的事件 或某个事件
+        $('.box').one('click',function () {
+            alert('第一次点击！');
+        })
+
+        $('#aaa').focus(function () {
+            $(this).css('background','pink');
+        })
+        /* $('#aaa').blur(function () {
+            $(this).css('background','red');
+        }) */
+        $('body').focusout(function () {
+            $('#aaa').css('background', 'green');
+        })
+
+
+        /* $('.box3').on('click', function () {
+            $(this).css('background','red');
+        }) */
+        /* var box3 = document.querySelector('.box3');
+        box3.addEventListener('click', function () {
+            box3.style.background = 'red';
+        }) */
+
+        $('.box3').hover(
+            function () {
+                $(this).addClass('.hover');
+            },
+            function () {
+                $(this).removeClass('.hover');
+            }
+        )
+
+    </script>
+</body>
+</html>

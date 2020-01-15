@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getUser (path, callback) {
+            return $.get(path, function (info) {
+                return callback(info);
+            })
+        }
+        getUser('./XX', function (resp) {
+            console.log(resp);
+        })
+
+        function getUser (path, callback) {
+            return $.get(path, callback);
+        }
+
+        var getUser = $.get();
+        // 纯函数：
+        // 相同的输入总会得到相同的输出,并且不会产生副作用的函数
+        // 纯函数不依赖参数以外的值
+    </script>
+</body>
+</html>

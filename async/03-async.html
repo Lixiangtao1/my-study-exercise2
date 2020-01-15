@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // async函数实现休眠
+        function timeout (ms) {
+            return new Promise(resolve => {
+                setInterval(resolve, ms);
+            })
+        }
+        async function test (ms) {
+            // 每隔2秒打印一个数
+            for (let i = 0; i < 5; i++) {
+                console.log(i);
+                await timeout(ms);
+            }
+        }
+        test(0);
+        /*
+         async函数 返回的是一个promise对象
+         await命令：正常情况下后面跟的是一个Promise对象，返回该Promise对象执行的结果,
+                    若不是Promise对象，就返回对应的值
+         */
+
+
+        //  任何一个await语句后面的promise对象变为reject状态,async函数都会被中断执行
+        async function test2 () {
+            try {
+                await Promise.reject('出错');   
+            } catch (error) {
+                console.log(error);
+            }
+            await console.log('hello world');
+        }
+        test2();
+    </script>
+</body>
+</html>

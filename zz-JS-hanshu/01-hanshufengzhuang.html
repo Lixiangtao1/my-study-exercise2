@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // https://www.baidu.com/s?tn=baidu&wd=javascrpt&rsv_sug=l
+        // 获取wd对应的JavaScript
+        function getParam (url,param) {
+            if (!/\?/.test(url)) {
+                return null;
+            }
+            var search = url.split('?')[1]; //tn=baidu&wd=javascrpt&rsv_sug=l
+            var array = search.split('&'); //[tn=baidu,wd=javascrpt,rsv_sug=l]
+            for (var i = 0; i < array.length; i++) {
+                var temp = array[i].split('='); //[tn,baidu] [wd,javascript] [rsv_sug,l]
+                if (temp[0] === param) {
+                    return temp[1];
+                }
+            }
+            return null;
+        }
+        var url = 'https://www.baidu.com/s?tn=baidu&wd=javascrpt&rsv_sug=l';
+        var param = 'wd';
+        var result = getParam(url,param);
+        console.log(result);
+
+
+
+    </script>
+</body>
+</html>

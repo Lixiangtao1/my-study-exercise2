@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #el-drawer__title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .vueModel {
+      width: 200px;
+      height: 200px;
+      border: 2px solid red;
+      /* overflow: hidden; */
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow: auto;
+    }
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<body>
+  <div id="app">
+    <template>
+      <div class="container">
+        <el-button @click="drawer = true" type="text" style="margin-left: 16px;">
+          点我打开
+        </el-button>
+        <div>
+          <el-drawer class="drawer-title" title="赠券详情" :visible.sync="drawer" :before-close="handleClose"
+            :direction="drection">
+            <div class="messageBox">
+              券类型:&nbsp;&nbsp;
+              <br />
+              券名称:&nbsp;&nbsp;
+              <br />
+              券有效期:&nbsp;&nbsp;
+              <br />
+              券使用说明:&nbsp;&nbsp;
+              <br />
+              赠券张数:&nbsp;&nbsp;
+              <br />
+            </div>
+          </el-drawer>
+          <input type="text" v-model="vueData" placeholder="请输入您的信息">
+          <br><br>
+          <div class="vueModel">
+            {{ vueData }}
+          </div>
+
+        </div>
+      </div>
+    </template>
+    <div class="block">
+      <el-pagination 
+      @size-change="handleSizeChange" 
+      @current-change="handleCurrentChange" 
+      :current-page="currentPage4"
+      :page-sizes="[10, 20, 30, 40]" 
+      :page-size="100" 
+      layout="total, sizes, prev, pager, next, jumper" 
+      :total=10
+      >
+      </el-pagination>
+    </div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        drection: 'rtl',
+        drawer: false,
+        vueData: ""
+      },
+      filters: {
+        capitalize: function (value) {
+          return value;
+        }
+      },
+      methods: {
+        handleClose(done) {
+          done();
+          this.$nextTick(() => {
+            // this.drawer = {};
+          })
+        },
+        handleSizeChange(val) {
+          console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+        }
+
+        //调用接口时参数要以对象的形式传入
+      }
+    })
+  </script>
+</body>
+
+</html>

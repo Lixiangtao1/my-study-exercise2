@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ajax请求
+        let ajax = new XMLHttpRequest();
+        ajax.open('post','./08-ajax.html');
+        ajax.setRequestHeader('Tom',18);
+        ajax.setRequestHeader('Content-type','x-www-urlencoded');
+        ajax.send('请求的内容');
+    </script>
+</body>
+</html>

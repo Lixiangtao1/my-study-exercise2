@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        var a = 20;
+        function foo () {
+            var a = 1;
+            var obj = {
+                a: 10,
+                c: this.a + 20
+                // 对象字面量的方式并不会产生自己的作用域**  所以此处的this与foo函数内部的this一样
+            }
+            return obj.c;
+        }    
+        console.log(window.foo());//40
+        console.log(foo());//严格模式下报错  非严格模式下同上
+    </script>
+</body>
+</html>

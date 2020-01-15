@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data:{
+                message:'this is shengmingzhouqi'
+            },
+            beforeCreate() {
+                console.group('创建状态之前---');
+                console.log('el:'+this.$el);//undefined
+                console.log('data:'+this.$data);//undefined
+                console.log('message:'+this.message);//undefined
+            },
+            created(){
+                console.log('创建状态完毕--');
+                console.log('el:'+this.$el);//undefined
+                console.log('data:'+this.$data);//[object Object]
+                console.log('message:'+this.$message);//undefined
+            },
+            beforeMount(){
+                console.log('挂载状态之前:---');
+                console.log('el:'+this.$el);//el:[object HTMLDivElement]
+                console.log('data:'+this.$data);
+                console.log('message:'+this.$message);
+            },
+            mounted(){
+                console.log('挂载状态完毕:---');
+                console.log('el:'+this.$el);
+                console.log('data:'+this.$data);
+                console.log('message:'+this.$message);
+            }
+        })
+    </script>
+</body>
+</html>

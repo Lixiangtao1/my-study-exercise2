@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* // 定时器
+        setTimeout(function () {
+            console.log('定时器开始执行');
+        })
+        // Promise对象
+        new Promise(resolve => {
+            console.log('Promise对象开始执行');
+            for(let i=0;i<1000;i++) {
+                i==99 && resolve();
+            }
+        }).then(resolve => {
+            console.log('then');
+        })
+        console.log('123'); */
+        console.log('开始执行');
+        setTimeout(function () {
+            console.log('定时器')
+        },0)
+        console.log('结束执行');
+    </script>
+</body>
+</html>

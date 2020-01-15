@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box');
+        function red () {
+            box.style.backgroundColor = 'red';
+        }
+        function green () {
+            box.style.backgroundColor = 'green';
+        }
+        function yellow () {
+            box.style.backgroundColor = 'yellow';
+        }
+        let light = (fn,timer) => {
+            return new Promise(resolve => {
+                setTimeout(function () {
+                    fn();
+                    resolve();
+                },timer)
+            })
+        }
+
+        /* Promise().then(() => {
+            light(red,3000);
+        }).then(() => {
+            light(green,3000);
+        }).then(() => {
+            light(yellow,1000);
+        }).then(() => {
+            start(times);
+        }) */
+        
+       /*  for (var i = 0; i<10; i++) {
+            light(red,2000);
+            light(green,4000);
+            light(yellow,1000);
+        } */
+    </script>
+</body>
+</html>

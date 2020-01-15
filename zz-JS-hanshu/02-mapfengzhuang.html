@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 封装一个map方法
+        // map的功能：给定一数组,对map的第一个参数进行处理
+        Array.prototype._map = function (fn, context) {
+            // 定义一个空数组存放数据
+            var temp = [];
+            if ((typeof fn) == 'function') {
+                var k = 0;
+                var len = this.length; //this指向给定的数组
+                // console.log(this);
+                for (; k < len; k++) {
+                    // 将每一项的运算操作过程丢进fn
+                    //利用 call 方法指定fn的this 指向与具体参数
+                    temp.push(fn.call(context, this[k], k, this)); // fn.call('this指向', 参数)
+                }
+            }else {
+                console.error('TypeError:'+ fn +'is not a function');
+            }
+            return temp;
+        }
+        // var newArray = [1,2,3,4]._map(function (item) {
+        //     return item + 1;
+        // })
+        // console.log(newArray);
+        var arr1 = [1,2,3,3];
+        var arr2 =arr1._map(function (item) {
+            return item*2;
+        })
+        console.log(arr2);
+
+    </script>
+</body>
+</html>

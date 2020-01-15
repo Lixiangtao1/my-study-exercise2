@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- <span>省：</span><select data="parentId">
+            <option value="0000">--请选择--</option>
+        </select> -->
+        <input type="text" id="btn" placeholder="请输入内容">
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('#btn').click(function () {
+            // var type=1;
+            /* $.ajax({
+                url: 'http://localhost:8080/API/Search/ExportTemplateFile?type=1',
+                type: 'get',
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                }
+            }) */
+
+            
+        })
+        var ss = $(this).val();
+            console.log(ss);
+    </script>
+</body>
+</html>

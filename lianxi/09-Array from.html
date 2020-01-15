@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Array将两类对象转化为真正的数组 */
+
+
+        /* Array.from 另外一个功能就是讲一个字符串转换为一个数组
+        ,并且返回的字符串的长度 */
+        
+        /* copywithin(target,start,end)
+         将数组中的第start位置到end位置的元素复制到target上 */
+
+         /* find ()  找出第一个符合条件的数组成员(其参数为一个回调函数) 
+            回调函数的参数有三个依次为:依次为当前的值、当前的位置和原数组
+         */
+
+        /*  findIndex() 返回第一个符合条件的数组成员,没有符合的将会返回-1
+         */
+
+         /* indexOf方法无法识别数组的NaN成员，
+         但是findIndex方法可以借助Object.is方法做到。 */
+        console.log([NaN].indexOf(NaN));//indexOf无法识别NaN的成员
+        console.log([NaN].findIndex(y=>Object.is(NaN,y)));
+    </script>
+</body>
+</html>

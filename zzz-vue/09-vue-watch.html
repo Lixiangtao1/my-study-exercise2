@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>您想要问的问题是：
+            <input v-model='question'>
+        </p>
+        <p>答案是：{{answer}}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <!-- loadsh  -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                question: '',
+                answer: '请先输入您的问题'
+            },
+            watch: {
+                // 监听question 当question改变就会运行这个函数
+                question: function (newQuestion, oldQuestion) {
+                    this.answer = '等待您输入完毕 ......';
+                    this.debouncedGetAnswer();
+                }
+            },
+
+            created: function () {
+                this.debouncedGetAnswer = _.debounce(this.getAnswer,500);
+            },
+
+            methods: {
+                getAnswer: function () {
+                    if (!this.question.indexOf('?') === -1) {
+                        this.answer = '当您输入完问题时才会回答';
+                        return
+                    }
+                    this.answer = '回答中......';
+                    var vm = this;
+                    axios.get('https://yesno.wtf/api')
+                    .then((respnse) => {
+                        console.log(respnse)
+                        vm.answer = _.capitalize(respnse.data.answer)
+                    })
+                    .catch((error) => {
+                        vm.answer = 'Error' + error;
+                    })
+                    
+                }
+                
+
+            }
+        })
+    </script>
+</body>
+</html>

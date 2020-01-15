@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            background-color: aquamarine;
+            width: 100px;
+            height: 100px;
+        }
+        .text-danger{
+            font-size: large;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-bind:class="{active: isActive, 'text-danger': hasError}">
+            v-bind:class
+        </div> -->
+        <div v-bind:class="[Active,textDanger]">
+            hahah
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: true,
+                Active: 'active',
+                textDanger: 'text-danger'
+            }
+        })
+    </script>
+</body>
+</html>

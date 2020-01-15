@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 生成一个0-2之间的随机数，如果小于1，则等待一段时间后返回成功，否则返回失败：
+        /* function test (resolve,reject) {
+            var timeout = Math.random() * 2;
+            console.log('set time out' + timeout + 'seconds');
+            setTimeout(function () {
+                if (timeout < 1) {
+                    console.log('call resolve()');
+                    resolve('200 OK')
+                } else {
+                    console.log('call reject()');
+                    reject('timeout in' + timeout + 'seconds');
+                }
+            },timeout*1000);
+        } */
+        function test(resolve, reject) {
+            var timeOut = Math.random() * 2;
+            log('set timeout to: ' + timeOut + ' seconds.');
+            setTimeout(function () {
+                if (timeOut < 1) {
+                    log('call resolve()...');
+                    resolve('200 OK');
+                }
+                else {
+                    log('call reject()...');
+                    reject('timeout in ' + timeOut + ' seconds.');
+                }
+            }, timeOut * 1000);
+        }
+    </script>
+</body>
+
+</html>

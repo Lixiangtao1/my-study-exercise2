@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:100px;height:100px;border:1px solid #ccc">
+        <!-- <input type="text" id="tet" placeholder=""> -->
+        <span>12345</span>
+        <input type="button" value="数据请求" id="btn">
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        $('#box').hover(function () {
+            $(this).css('backgroundColor','skyblue');
+        })
+
+        $('#btn').on('click', function () {
+            var params = {
+                CurPage: 1,
+                PageSize: 20,
+                conditions: []
+            }
+            $.ajax({
+                url: 'http://localhost:8080/API/Sales/GetPage',
+                type: 'post',
+                async: true,
+                data: params,
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (result) {
+                    console.log(result);
+                }
+            })
+        })
+
+        
+    </script>
+</body>
+</html>

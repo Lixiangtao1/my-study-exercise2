@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* const promise = function (url) {
+            return new Promise ((resolve,reject) => {
+                $.get(url,data => {
+                    resolve(data)
+                });
+            })
+        }
+        promise(url).then(data1 => {
+            console.log(data1);
+        }).then(data2 => {
+            console.log(data2);
+        }).then(data3 => {
+            console.log(data3);
+        }).catch(err => {
+            throw new Error(err);
+        }) */
+        let promise = new Promise (function (resolve,reject) {
+            console.log('this is Promise');
+        })
+        console.log('this is end');
+    </script>
+</body>
+</html>

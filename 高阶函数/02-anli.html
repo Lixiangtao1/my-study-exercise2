@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 'https://www.baidu.com/s?tn=baidu&wd=javascript&rsv_sug=1  封装函数获取参数url中的wd
+    function getUrl (url, param) {
+        var str = url.split('?');
+        var arr = str[1].split('&')
+        for (let i = 0; i < arr.length; i++) {
+            var temp = arr[i].split('=');
+            if (temp[0] === param) {
+                return temp[1];
+            }
+        }
+    }
+    var path = 'https://www.baidu.com/s?tn=baidu&wd=javascript&rsv_sug=1';
+    console.log(getUrl(path, 'wd'));
+    </script>
+</body>
+</html>

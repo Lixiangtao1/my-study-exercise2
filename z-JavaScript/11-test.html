@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="test">test<span>测试DOM</span></p>
+    <script>
+        /* const array = new Array(5).map((item) => {
+            return item = {
+                name: '1'
+            }
+        });
+        console.log(array);
+        console.log(new Array(5));//[empty * 5] */
+
+        /* innerHTML与innerText textContent */
+        var p = document.getElementById('test');
+        console.log(p.innerHTML);
+        console.log(p.innerText);
+        // innerText只返回呈现到页面上的文本
+        console.log(p.textContent);
+        // textContent返回的是能够获取到所有节点的文本,不管文本是否呈现，而且也能够返回script和style中节点的文本，
+        // 而innerText则不能获取到script和style上的节点文本内容
+    </script>
+</body>
+</html>

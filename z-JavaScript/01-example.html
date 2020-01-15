@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 函数声明的优先级要高于变量声明的优先级 -->
+    <script>
+        /* function test () {
+            console.log(a);
+            console.log(fn());
+
+            var a = 1;
+            function fn () {
+                return 2;
+            }
+        } 
+        test(); */
+
+        // 函数bar的变量对象中是否包含了变量a 
+        /* function foo () {
+            var a = 20;
+
+            function bar () {
+                a = 30;
+                console.log(a)
+            }
+            bar();
+        }
+        foo(); */
+        // 非严格模式下，函数中直接赋值的变量和方法，则自动变为全局变量window的属性
+
+        // eg:
+        /* function bar () {
+            bar = 30;
+        }
+        function foo () {
+            bar ();
+            return bar + 30;
+        }
+        console.log(foo()); */
+
+        var arr = [1,2,3,4,5];
+        for (var i = 0; i < arr.length; i++) {
+            console.log('i的值为:'+ i); // 0,1,2,3,4
+        }
+        console.log(i); // 5
+        for(let i=0;i<5;i++){
+            console.log('i的值为:'+i);
+        }
+        console.log(i);
+
+        
+    </script>
+</body>
+</html>

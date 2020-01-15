@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模块化案例 -->
+    <script>
+        var modules_status = (function () {
+            var status = {
+                number: 0,
+                color: null
+            };
+            // 添加访问和设置的方法
+            var get = function (props) {
+                return status[props];
+            }
+            var set = function (props,value) {
+                status[props] = value;
+            }
+            return {get: get, set: set}
+        })();
+
+        // 创建body背景颜色的模块
+        var modules_color = (function () {
+            //引入status模块
+            var state = modules_status;
+
+            // 设置颜色
+            var colors = ['orange', '#ccc', 'skyblue'];
+            function render () {
+                var color = colors[state.get('number')%3];
+                document.body.style.backgroundColor = color;
+            }
+            return {render: render}
+        })();
+
+        // 创建一个模块显示当前数值与背景色对比
+        var modules_context = (function () {
+            // 引入status模块
+            var state = modules_status;
+
+            // 显示数值
+            function render () {
+                document.body.innerHTML = 'this Number is:' + state.get('number');
+            }
+            return {render: render}
+        })();
+
+        // 主模块显示
+        var modules_main = (function render() {
+            // 引入模块
+            var state = modules_status;
+            var colors = modules_color;
+            var context = modules_context;
+
+            setInterval(function() {
+                var newNumber = state.get('number') + 1;
+                state.set('number', newNumber);
+
+                colors.render();//颜色改变
+                context.render();//数字改变
+            },1000)
+        })();
+
+
+    </script>
+</body>
+</html>

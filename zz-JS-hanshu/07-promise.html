@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <script>
+        /* const p1 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                // reject(new Error('fail'));
+                resolve('p1执行成功');
+            },3000);
+        })
+        const p2 = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve(p1)
+            },2000);
+        })
+
+        // 由于p1的状态决定了p2的状态 ，因此后面的then语句都是针对p1的
+        p2.then((res) => {
+            console.log(res);
+        }).catch((error) => {
+            console.log(error);
+        }) */
+
+        new Promise((resolve,reject) => {
+            resolve('执行成功');
+            console.log('2');
+        }).then((res) => {
+            console.log(res);
+        })
+
+        // 真正出发then中的回调函数并不是then而是resolve触发的回调函数
+    </script>
+</body>
+</html>

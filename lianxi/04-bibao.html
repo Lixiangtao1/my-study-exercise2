@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jeDate日期控件</title>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script type="text/javascript" src="./jedate.min.js"></script>
+<link type="text/css" rel="stylesheet" href="jedate.css">
+</head>
+<body class="bodys">
+    <!-- <input class="workinput wicon" id="custom1">
+    <br>
+    <input type="date" value="2019-01">
+    <br>
+    <input type="datetime-local" value="2015-07-01T02:03:04"> -->
+    <br>
+    <!-- <input type="date-local" value="2019-01-01"> -->
+    <input type="file" value="选择文件" class="test-image-file">
+</body>
+<script>
+    var
+        fileInput = document.getElementById('test-image-file'),
+        info = document.getElementById('test-file-info'),
+        preview = document.getElementById('test-image-preview');
+        // 监听change事件:判断是否选择文件
+    fileInput.addEventListener('change', function () {
+        // 清除背景图片:
+        preview.style.backgroundImage = '';
+        // 检查文件是否选择:
+        if (!fileInput.value) {
+            info.innerHTML = '没有选择文件';
+            return;
+        }
+        // 获取File引用:
+        var file = fileInput.files[0];
+        // 获取File信息:
+        info.innerHTML = '文件: ' + file.name + '<br>' +
+            '大小: ' + file.size + '<br>' +
+            '修改: ' + file.lastModifiedDate;
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+            alert('不是有效的图片文件!');
+            return;
+        }
+        // 读取文件:
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'            
+            preview.style.backgroundImage = 'url(' + data + ')';
+        };
+        // 以DataURL的形式读取文件:
+        reader.readAsDataURL(file);
+    });
+</script>
+</html>

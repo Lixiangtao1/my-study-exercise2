@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* function foo() {
+            console.log(this.a);
+        }    
+        function active(fn) {
+            fn();
+        }
+        var a = 20;
+        var obj = {
+            a: 10,
+            getA: foo,
+            active: active
+        }
+        // active(obj.getA);//20
+        obj.active(obj.getA);//20
+
+
+        var n = 'window';
+        var obj = {
+            n: 'obj',
+            getN: function () {
+                return function () {
+                    return this.n;
+                    // this指向window
+                }           
+            }
+        }
+        console.log(obj.getN()()); // window */
+
+
+
+        var a = 20;
+        var obj = {
+            a: 10,
+            // getFn: fn()
+            getFn: fn
+        }
+        function fn() {
+            console.log(this.a);
+        }
+        // window[obj.getFn]; //20  =   fn() this指向window
+
+        obj.getFn; // 10   ===    obj.fn() 
+        console.log((obj.getFn)()); //fn
+
+// bind特点：参数被绑定，再次重新传参无效
+    </script>
+</body>
+</html>

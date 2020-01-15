@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 'http://n.sinaimg.cn/sports/180/w640h340/20200106/a740-imrkkfy3064935.jpg' -->
+    <script>
+        function loadImageAsync(url) {
+            return new Promise(function (reslove, reject) {
+                var img = new Image();
+                img.onload = function () {
+                    reslove(img);
+                }
+                img.onerror = function () {
+                    reject(new Error('could not load image' + url));
+                }
+                // console.log("loading image");
+                img.src = url;
+            });
+        }
+        var loadImage1 = loadImageAsync("http://n.sinaimg.cn/sports/180/w640h340/20200106/a740-imrkkfy3064935.jpg");
+        loadImage1.then(function reslove() {
+            console.log("success");
+        }, function reject() {
+            console.log("fail");
+        });
+        /* var loadImage2 = loadImageAsync("1.png");
+        loadImage2.then(function reslove() {
+            console.log("success");
+        }, function reject() {
+            console.log("fail");
+        }); */
+
+    </script>
+</body>
+
+</html>

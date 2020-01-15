@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{reverseMessage}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello world'
+            },
+            computed: {
+                // 计算属性: 解决模版字符串中过多的逻辑,
+                // 避免出现逻辑过多难以维护
+                reverseMessage: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+        console.log(vm.reverseMessage)
+        vm.message = 'good';
+
+    </script>
+</body>
+</html>

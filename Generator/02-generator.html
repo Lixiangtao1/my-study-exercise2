@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //利用generator函数的特性 展开数组
+        var arr = [1,[[2,3],4],[5,6]];
+        var extend = function* (array) {
+            for (let i = 0; i < array.length; i++) {
+                var item = array[i];
+                if (typeof item !== 'number') {
+                    yield* extend(item);
+                }else {
+                    yield item;
+                }
+            }
+        }  
+        for (var x of extend(arr)) {
+            console.log(x);
+        }
+
+        /* Generator 看到for...of...循环 */
+    </script>
+</body>
+</html>

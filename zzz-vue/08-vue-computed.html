@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{fullName}}
+        <!-- {{fullname}} -->
+    </div>
+    <script>
+        /* var vm = new Vue({
+            el: '#app',
+            data: {
+                firstname: 'foo',
+                lastname: 'bar',
+                fullname: 'foo bar'
+            },
+            watch: {
+                firstname: function (val) {
+                    this.fullname = val + this.firstname;
+                },
+                lastname: function (val) {
+                    this.fullname = val + this.lastname;
+                }
+            }
+        }) */
+
+        var vm1 = new Vue({
+            el: '#app',
+            data: {
+                firstName: '',
+                lastName: '',
+            },
+            computed: {
+                fullName: {
+                    // getter
+                    get: function () {
+                        return this.firstName + '' + this.lastName;
+                    },
+                    // setter
+                    set: function (newVal) {
+                        var name = newVal.split(' ');
+                        this.firstName = name[0];
+                        this.lastName = name[name.length-1];
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
