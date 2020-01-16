@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            mounted: function (){
+                // get请求
+                axios.get('https://cnodejs.org/api/v1/topics?page=1&&limit=10')
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+                /* axios.interceptors.reuest.use(function (config) {
+                    console.log(config);
+                },function (error) {
+                    console.log(error);
+                }) */
+
+            }
+        })
+    </script>
+</body>
+</html>

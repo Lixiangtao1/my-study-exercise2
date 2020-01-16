@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        function Ajax (url,callback) {
+            $.ajax({
+                type: 'get',
+                url: url,
+                dataType: 'json',
+                // data: params,
+                success: function (result) {
+                    // console.log(result);
+                    if ($.isFunction(callback)) {
+                        // jQuery.isFunction() 检测是否为函数
+                        callback(result)
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            })
+        }    
+        Ajax('https://cnodejs.org/api/v1/topics?page=1&&limit=10',function (res) {
+            console.log(res);
+        });
+
+    </script>
+</body>
+</html>

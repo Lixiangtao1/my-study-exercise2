@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <label><span>请输入姓名</span></label>
+        <input v-model="newName">
+        <button @click="add">add</button>
+        <div>
+            <!-- <li v-for="(item,index) in array" :key="item.id">
+                {{item.name}} 
+                <button @click="remove">remove</button>
+            </li> -->
+            <li 
+            is="todo"
+            v-for="(item,index) in array"
+            :key="item.id"
+            :haha="item.name" 
+            @remove="array.splice(index,1)"
+            >
+
+            </li>
+        </div>
+        <br>
+        <button @click='btn'>count自增</button>
+        <p>the button is above {{count}} times</p>
+    </div>
+
+    <script>
+        // 子组件
+        Vue.component('todo',{
+            // $emit 子组件调用父组件的方法并传递数据
+            // props: 父组件可以使用props向子组件传递数据(接收父组件的数据)
+
+            template:'\
+                <li>\
+                {{ haha }}\
+                <button v-on:click="$emit(\'remove\')">Remove</button>\
+                </li>\
+            ',
+            props: ['haha'] //接收父组件的数据 首先要绑定数据名 :haha="item.name"(传数据)
+        })
+
+        // 父组件
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                array: [
+                    {name: '张三', id: 001},
+                    {name: '李四', id: 002},
+                    {name: '王二', id: 003},
+                    {name: '流五', id: 004}
+                ],
+                newName:'',
+                ID: 5,
+                count: 0
+            },
+            methods: {
+                // 新增
+                add: function () {
+                    this.array.push({
+                        id: this.ID++,
+                        name: this.newName
+                    })
+                    this.newName = ''; //清空输入框
+                },
+                // 删除
+                // remove: function () {
+                //         this.array.splice();
+                // }
+                btn: function () {
+                    this.count = this.count + 1;
+                }
+            },
+        })
+    </script>
+</body>
+</html>
