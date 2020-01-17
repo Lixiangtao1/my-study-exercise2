@@ -36,7 +36,7 @@
         // 子组件
         Vue.component('todo',{
             // $emit 子组件调用父组件的方法并传递数据
-            // props: 父组件可以使用props向子组件传递数据(接收父组件的数据)
+            // props: 可以使用props传递数据(子组件接收父组件的数据) props在子组件中注册
 
             template:'\
                 <li>\
@@ -44,7 +44,7 @@
                 <button v-on:click="$emit(\'remove\')">Remove</button>\
                 </li>\
             ',
-            props: ['haha'] //接收父组件的数据 首先要绑定数据名 :haha="item.name"(传数据)
+            props: ['haha'] //子组件要注册好要传递的数据  :haha="item.name"
         })
 
 
