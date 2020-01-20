@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click='add'>add</button>
+        <br>
+        <input type="text" v-focus>
+        <h1>
+            <a name="hello-world" href="#hello-world">
+                hello world!
+            </a>
+        </h1>
+        <anchored-heading :level="1">hello world!</anchored-heading>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            // props: {
+            //     level: nnumber,
+            //     required: true
+            // },
+            methods: {
+                add: function () {
+                    this.count = this.count + 1;
+                }
+            },
+            // 自定义注册局部指令 v-focus 只要进入页面就会聚焦到input
+            directives: {
+                focus: {
+                    inserted: function (el) {
+                        el.focus();
+                    }
+                }
+            }
+        })
+        /* 自定义注册全局指令 */
+        // Vue.directive('focus', {
+        //     inserted: function (el) {
+        //         el.focus();
+        //     }
+        // })
+        
+    </script>
+</body>
+</html>
